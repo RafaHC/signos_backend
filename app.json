@@ -1,0 +1,11 @@
+{
+    "name": "Back-end_Signos",
+    "description": "APIs capazes de criar, apagar e listar consultas de signo e ascendentes",
+    "keywords": [
+        "node",
+        "express",
+        "mocha",
+        "socket.io",
+        "heroku"
+    ]
+}
