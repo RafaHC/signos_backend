@@ -6,7 +6,7 @@
   protegido com JWT, senha criptografada com bcrypt.
   
   ### Váriaveis de ambiente
-      SECRET_KEY: defina sua chave secreta que será usada na autenyicação com JWT.
+      SECRET_KEY: defina sua chave secreta que será usada na autenticação com JWT.
       DATABASE_URL: defina sua conexão do BD postgreSQL e rode as querys que está na pasta sql, com o nome tables.sql. 
 
 ## Instalação
