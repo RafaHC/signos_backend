@@ -5,7 +5,7 @@
  */
 let request = require("request");
 var expect = require('expect.js');
-let urlBase = "http://localhost:3000/";
+let urlbase = "http://localhost:3000/";
 let idUsuario;
 let idSigno;
 let IdAscendente;
@@ -16,7 +16,7 @@ describe("Teste API /usuarios POST",  () => {
 
         request.post(
             {
-                url: urlBase + 'usuarios',
+                url: `${urlbase}usuarios`,
                 json: true,
                 body: { usuario: 'Rafael 99', senha: '1234' }
             },
@@ -38,7 +38,7 @@ describe("Teste API /usuarios POST", () => {
 
         request.post(
             {
-                url: urlBase + 'usuarios',
+                url: `${urlbase}usuarios`,
                 json: true,
                 body: { usuario: 'Rafael 99', senha: '1234' }
             },
@@ -60,7 +60,7 @@ describe("Teste API /login POST", () => {
         
         request.post(
             {
-                url: urlBase + 'login',
+                url: `${urlbase}login`,
                 json:true,
                 body: { usuario: 'Rafael 99', senha: '1234' }
             },
@@ -79,7 +79,7 @@ describe("Teste API /login POST", () => {
 describe('Testando API /signos POST', () => {
     it('Testando o insert de signo', (done) => {
         var options = {
-            url: 'http://localhost:3000/signos',
+            url: `${urlbase}signos`,
             headers:
             {
                 Authorization: token,
@@ -110,7 +110,7 @@ describe('Testando API /signos POST', () => {
 describe('Testando API /signos/:id GET', () => {
     it('Testando o get de signos por usuarioId', (done) => {
         var options = {
-            url: 'http://localhost:3000/signos/' + idUsuario,
+            url: `${urlbase}signos/${idUsuario}`,
             headers:
             {
                 Authorization: token,
@@ -131,7 +131,7 @@ describe('Testando API /signos/:id GET', () => {
 describe('Testando API /signos/:id DELETE', () => {
     it('Testando o delete de signos por signoId', (done) => {
         var options = {
-            url: 'http://localhost:3000/signos/' + idSigno,
+            url: `${urlbase}signos/${idSigno}`,
             headers:
             {
                 Authorization: token,
@@ -152,7 +152,7 @@ describe('Testando API /ascendentes POST', () => {
     it('Testando o post de ascendentes por signoid', (done) => {
         var options = {
             method: 'POST',
-            url: 'http://localhost:3000/ascendentes',
+            url: `${urlbase}ascendentes`,
             headers:
             {
                 Authorization: token,
@@ -183,7 +183,7 @@ describe('Testando API /ascendentes/:id GET', () => {
     it('Testando o get de ascendentes por signoId', (done) => {
         var options = {
             method: 'GET',
-            url: 'http://localhost:3000/ascendentes/3',
+            url: `${urlbase}ascendentes/${idSigno}`,
             headers:
             {
                 Authorization: token
@@ -206,7 +206,7 @@ describe('Testando API /ascedentes/:id DELETE', () => {
         var options = {
             method: 'DELETE',
             Accept: '*/*',
-            url: 'http://localhost:3000/ascendentes/'+ IdAscendente,
+            url: `${urlbase}ascendentes/${IdAscendente}`,
             headers:
             {
                 Authorization: token
@@ -227,7 +227,7 @@ describe("Teste API /usuarios/:id DELETE", () => {
     it("Testando o delete de usuario na aplicação", (done) => {
         request.delete(
             {
-                url: urlBase + 'usuarios/' + idUsuario,
+                url: `${urlbase}usuarios/${idUsuario}`,
                 json: true
             },
         (error, response, body) => {

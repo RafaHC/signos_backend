@@ -16,7 +16,6 @@
     "expect.js": "^0.3.1",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
-    "lodash": "^4.17.15",
     "pg": "^7.12.1",
     "sequelize": "^5.18.4",
     "socket.io": "^2.2.0"

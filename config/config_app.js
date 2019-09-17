@@ -6,8 +6,8 @@ let middleware = require('./middleware.js');
 
 let app = express();
 
-var http = require('http').createServer(app);
-var io = require('socket.io')(http);
+let http = require('http').createServer(app);
+let io = require('socket.io')(http);
 
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
