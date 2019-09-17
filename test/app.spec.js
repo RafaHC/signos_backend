@@ -119,27 +119,6 @@ describe('Testando API /signos/:id GET', () => {
         };
         request.get(options, (error, response, body) => {
             if (error) throw new Error(error);
-            expect(body.length).to.equal(150);
-            expect(response.statusCode).equal(200);
-            done();
-
-        });
-    })
-})
-
-
-describe('Testando API /signos/:id DELETE', () => {
-    it('Testando o delete de signos por signoId', (done) => {
-        var options = {
-            url: `${urlbase}signos/${idSigno}`,
-            headers:
-            {
-                Authorization: token,
-                'Content-Type': 'application/json'
-            }
-        };
-        request.delete(options, (error, response, body) => {
-            if (error) throw new Error(error);
             expect(response.statusCode).equal(200);
             done();
 
@@ -221,6 +200,27 @@ describe('Testando API /ascedentes/:id DELETE', () => {
 
     })
 })
+
+
+describe('Testando API /signos/:id DELETE', () => {
+    it('Testando o delete de signos por signoId', (done) => {
+        var options = {
+            url: `${urlbase}signos/${idSigno}`,
+            headers:
+            {
+                Authorization: token,
+                'Content-Type': 'application/json'
+            }
+        };
+        request.delete(options, (error, response, body) => {
+            if (error) throw new Error(error);
+            expect(response.statusCode).equal(200);
+            done();
+
+        });
+    })
+})
+
 
 describe("Teste API /usuarios/:id DELETE", () => {
     // a funcao it eh o que vamos testar realmente, se o google retorna 200

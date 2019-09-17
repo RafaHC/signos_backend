@@ -15,7 +15,8 @@ CREATE TABLE signos (
    descricao varchar(480),
    usuarioid integer not null, 
    createdAt DATE,
-   updatedAt DATE
+   updatedAt DATE,
+   FOREIGN KEY (usuarioid) REFERENCES usuarios(ID)
 );
 
 CREATE TABLE ascendentes (
@@ -26,5 +27,19 @@ CREATE TABLE ascendentes (
    descricao varchar(480),
    signoid integer not null, 
    createdAt DATE,
-   updatedAt DATE
+   updatedAt DATE,
+   FOREIGN KEY (signoid) REFERENCES signos(ID)
 );
+
+
+ALTER TABLE public.ascendentes RENAME COLUMN createdat TO "createdAt";
+ALTER TABLE public.ascendentes RENAME COLUMN updatedat TO "updatedAt";
+
+ALTER TABLE public.signos RENAME COLUMN createdat TO "createdAt";
+ALTER TABLE public.signos RENAME COLUMN updatedat TO "updatedAt";
+
+ALTER TABLE public.usuarios RENAME COLUMN createdat TO "createdAt";
+ALTER TABLE public.usuarios RENAME COLUMN updatedat TO "updatedAt";
+
+
+ALTER TABLE public.usuarios ALTER COLUMN senha TYPE varchar(60) USING senha::varchar;
