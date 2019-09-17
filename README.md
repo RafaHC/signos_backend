@@ -35,10 +35,10 @@ Apis:
 - Configurar Jwt - OK
 - Criar Model Usuarios - OK
 - Criar Usuariosctrl:
-          - Cadastro, criptografia de senha(bcrypt), Login, compara senha criptografada e devolve o token, implementar test no projeto - 
+          - Cadastro, criptografia de senha(bcrypt), Login, compara senha criptografada e devolve o token, implementar test no projeto - OK 
 - Criar model Signo - OK
-- Criar SignoCtrl: Cadastrar signo, Listar Signos, Deletar Signo	
-- Criar model AscendenteCtrl: Cadastrar Ascendente, Listar Ascendentes, Deletar Ascendente	
+- Criar SignoCtrl: Cadastrar signo, Listar Signos, Deletar Signo - OK
+- Criar model AscendenteCtrl: Cadastrar Ascendente, Listar Ascendentes, Deletar Ascendente	- OK
 - Testar todas as rotas do  SignoCtrl - OK
 - Testar todas as rotas do Usuarioctrl - OK
 - Testar todas as rotas do  AscendenteCtrl - OK	
