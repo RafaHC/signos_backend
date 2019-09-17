@@ -1,7 +1,7 @@
 CREATE TABLE usuarios (
     ID  SERIAL PRIMARY KEY,
     usuario varchar(20) not null,
-    senha varchar(50) not null,
+    senha varchar(60) not null,
     email varchar(60),
     createdAt DATE,
     updatedAt DATE
@@ -40,6 +40,3 @@ ALTER TABLE public.signos RENAME COLUMN updatedat TO "updatedAt";
 
 ALTER TABLE public.usuarios RENAME COLUMN createdat TO "createdAt";
 ALTER TABLE public.usuarios RENAME COLUMN updatedat TO "updatedAt";
-
-
-ALTER TABLE public.usuarios ALTER COLUMN senha TYPE varchar(60) USING senha::varchar;
