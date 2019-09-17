@@ -6,6 +6,16 @@ let config = require('./../../config/config');
 
 let UsuariosCtrl = {
     create: async (req, res) => {
+        req.assert('usuario', 'Usuario é obrigatório!').notEmpty();
+        req.checkBody('usuario', 'Usuario deve ter minimo de 5 caracteres e máximo de 20').isLength({ min: 5, max: 20 });
+        req.assert('senha', 'Senha é obrigatório!').notEmpty();
+        let erros = req.validationErrors();
+
+        if (erros) {
+            res.status(400).json(erros)
+            return;
+        }
+
         const usuario = await usuarios.findOne({ where: { usuario: req.body.usuario } });
         if(usuario){
             return res.status(400).json({message: 'Este usuario já existe'});
@@ -40,6 +50,15 @@ let UsuariosCtrl = {
     },
 
     login: async (req, res) => {
+            req.assert('usuario', 'Usuario é obrigatório!').notEmpty();
+            req.assert('senha', 'Senha é obrigatório!').notEmpty();
+            let erros = req.validationErrors();
+
+            if (erros) {
+                res.status(400).json(erros)
+                return;
+            }
+            
            let match;
            let usuario = req.body;
            const usuarioEncontrado = await usuarios.findOne({ where: { usuario: usuario.usuario } });
