@@ -4,10 +4,9 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 let middleware = require('./middleware.js');
 let expressValidator  = require('express-validator');
+let app = express();
 let http = require('http').createServer(app);
 let io = require('socket.io')(http);
-
-let app = express();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
