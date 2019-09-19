@@ -18,10 +18,9 @@ app.use((req, res, next) => {
     return next();
 });
 
-http.listen(process.env.PORT || 3000, () => console.log('Server Rodando'))
+http.listen(process.env.PORT || 4000, () => console.log('Server Rodando'))
 
 module.exports = {
     app: app,
     middleware: middleware
 };
-

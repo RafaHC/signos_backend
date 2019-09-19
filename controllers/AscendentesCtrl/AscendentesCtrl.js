@@ -19,9 +19,14 @@ let SignosCtrl = {
             return;
         }
 
-        let ascendente = await ascendentes.create(req.body);
-        req.io.emit('ascendente', ascendente);
-        return res.json(ascendente);
+        const ascendente = await ascendentes.findOne({ where: { nome: req.body.nome, signoid: req.body.signoid } });
+        if (ascendente) {
+            return res.status(400).json({ message: 'Este ascendente já existe' });
+        }
+
+        let result = await ascendentes.create(req.body);
+        req.io.emit('ascendente', result);
+        return res.json(result);
     },
     delete: (req, res) => {
         let result = ascendentes.destroy({

@@ -18,10 +18,16 @@ let SignosCtrl = {
             res.status(400).json(erros)
             return;
         }
+
+
+        const signo = await signos.findOne({ where: { nome: req.body.nome, usuarioid: req.body.usuarioid } });
+        if (signo) {
+            return res.status(400).json({ message: 'Este signo já existe' });
+        }
         
-        let signo = await signos.create(req.body);
-        req.io.emit('signo', signo);
-        return res.json(signo);
+        let result = await signos.create(req.body);
+        req.io.emit('signo', result);
+        return res.json(result);
     },
     delete: (req, res) => {
         let result = signos.destroy({

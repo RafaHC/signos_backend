@@ -5,7 +5,7 @@
  */
 let request = require("request");
 var expect = require('expect.js');
-let urlbase = "http://localhost:3000/";
+let urlbase = "http://localhost:4000/";
 let idUsuario;
 let idSigno;
 let IdAscendente;
@@ -34,7 +34,7 @@ describe("Teste API /usuarios POST",  () => {
 }); 
 
 describe("Teste API /usuarios POST", () => {
-    it("Testando a criação do usuario repetido", (done) => {
+    it("Testando a criação do usuario repetido, erro esperado", (done) => {
 
         request.post(
             {
@@ -107,6 +107,37 @@ describe('Testando API /signos POST', () => {
     })
 })
 
+
+describe('Testando API /signos POST', () => {
+    it('Testando o insert de signo repetido, erro esperado', (done) => {
+        var options = {
+            url: `${urlbase}signos`,
+            headers:
+            {
+                Authorization: token,
+                'Content-Type': 'application/json'
+            },
+            body:
+            {
+                nome: 'Peixes',
+                data_inicio: '01/02',
+                data_fim: '28/02',
+                usuarioid: idUsuario
+            },
+            json: true
+        };
+        request.post(options, (error, response, body) => {
+            if (error) throw new Error(error);
+            expect(response.statusCode).equal(400);
+            expect(body.message).equal('Este signo já existe');
+
+
+            done();
+
+        });
+    })
+})
+
 describe('Testando API /signos/:id GET', () => {
     it('Testando o get de signos por usuarioId', (done) => {
         var options = {
@@ -152,6 +183,36 @@ describe('Testando API /ascendentes POST', () => {
             IdAscendente = body.id;
             expect(body.id).to.not.equal(undefined);
             expect(response.statusCode).equal(200);
+            done();
+        });
+
+    })
+});
+
+describe('Testando API /ascendentes POST', () => {
+    it('Testando o post de ascendentes por signoid repetido, erro esperado', (done) => {
+        var options = {
+            method: 'POST',
+            url: `${urlbase}ascendentes`,
+            headers:
+            {
+                Authorization: token,
+                'Content-Type': 'application/json'
+            },
+            body:
+            {
+                nome: 'Touro',
+                hora_inicio: '16:00',
+                hora_fim: '19:00',
+                signoid: idSigno
+            },
+            json: true
+        };
+
+        request(options, function (error, response, body) {
+            if (error) throw new Error(error);
+            expect(response.statusCode).equal(400);
+            expect(body.message).equal('Este ascendente já existe');
             done();
         });
 
