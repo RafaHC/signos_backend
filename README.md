@@ -1,4 +1,4 @@
-# Backend dos Signos
+# Backend dos Signos e Ascendentes
 
 ## Descrição
 
