@@ -88,8 +88,8 @@ describe('Testando API /signos POST', () => {
             body:
             {
                 nome: 'Peixes',
-                data_inicio: '01/02',
-                data_fim: '28/02',
+                data_inicio: '02-01',
+                data_fim: '02-28',
                 usuarioid: idUsuario
             },
             json: true
@@ -120,8 +120,8 @@ describe('Testando API /signos POST', () => {
             body:
             {
                 nome: 'Peixes',
-                data_inicio: '01/02',
-                data_fim: '28/02',
+                data_inicio: '02-01',
+                data_fim: '02-28',
                 usuarioid: idUsuario
             },
             json: true
